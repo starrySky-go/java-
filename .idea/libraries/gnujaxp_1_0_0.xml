@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="gnujaxp-1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/gnujaxp-1.0.0.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jcommon-1.0.16.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jfreechart-1.0.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
