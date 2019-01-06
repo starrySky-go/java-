@@ -1,8 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * 这个程序还是用来将元素从序列化文件中读取东西吧，不更改它了
@@ -30,10 +28,18 @@ public class Procedure {
             try {
                 String s = null;
                 FileReader fileReader = new FileReader(file);
+                System.out.println("看一下这个文件名到底是怎么样的");
+                System.out.println(file.getName());
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
                 while ((s = bufferedReader.readLine()) != null) {
+                    System.out.println(s);
                     String[] str = s.split(",");
-                    Student student = new Student(str[0], str[1], Integer.parseInt(str[2]));
+                    for(int i = 0 ; i < str.length ; i ++){
+                        System.out.println("在FileToRam里面进行测试");
+                        System.out.println(str[i]);
+                    }
+                    System.out.println("这里面出现bug了吗+procedure.fileToRam");
+                    Student student = new Student(str[0], str[1], Float.parseFloat(str[2]));
                     System.out.println(student.toString()+"在handle方法里面");
                     arrayList.add(student);
                 }
@@ -95,6 +101,24 @@ public class Procedure {
         }
     }
 
+
+    public void ramToFile(BufferedWriter file){
+        BufferedWriter fileWriter = file;
+        System.out.println("这个有没有运行到这里呢");
+        System.out.print(arrayList.get(0).getGrade());
+        try{
+            for(int i = 0 ; i < arrayList.size(); i ++){
+                String str = arrayList.get(i).getId()+","+arrayList.get(i).getName()+","+arrayList.get(i).getGrade()+"\n";
+                System.out.println(str);
+                fileWriter.write(str);
+            }
+            fileWriter.flush();
+            fileWriter.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+    }
     /**
      * 将置于文本的数据读取到该程序中来
      * 将序列化的内容重新读取到程序中来
@@ -156,8 +180,15 @@ public class Procedure {
         Arrays.sort(students, (o1, o2) -> (int)o2.getGrade() - (int)o1.getGrade());
         return students;
     }
+    public void test(){
+        System.out.println("这是一个测试，让我来测一下吧，test");
+        for(int i = 0 ; i < arrayList.size();i++){
+            float grade = arrayList.get(i).getGrade();
+            System.out.println(grade);
+        }
+    }
     public static void main(String[] args) {
-        File file1 = new File("C:\\Users\\陈佳展\\Desktop\\first.txt");
+        File file1 = new File("first-second.txt");
         Procedure procedure = new Procedure(file1);
       //  procedure.Tofile();
         procedure.load();
